@@ -14,8 +14,12 @@
       font-family: "Rubik", sans-serif;
       background: url("https://marketplace.canva.com/EAFZcmTpKas/1/0/1600w/canva-video-intro-portada-fondo-background-simple-rosa-dorado-U93tpA4NMDA.jpg");
       background-size: cover;
-      color: lightgreen;
+      color: white;
       text-align: center;
+    }
+
+    h1 {
+      color: black; /* Title is now black */
     }
 
     input, select, textarea, button {
@@ -26,11 +30,9 @@
     }
 
     form {
-      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-      padding: 20px;
-      border-radius: 10px;
       display: inline-block;
       margin-top: 20px;
+      /* Removed background, padding, and border-radius */
     }
   </style>
 </head>
@@ -38,28 +40,21 @@
 <body>
   <center>
     <h1>Form for Students in M1-2</h1>
-    
-    <!-- Student Form -->
+
     <form id="studentform">
-      
-      <!-- Name input -->
       <label>Name-Surname<br>
         <input type="text" name="fullname" placeholder="Enter Name Surname" required>
       </label>
       <br><br>
 
-      <!-- Age input -->
       <label>Age<br>
         <input type="number" name="age" min="10" max="18" placeholder="Enter Age" required>
       </label>
       <br><br>
 
-      <!-- Classroom dropdown -->
       <label>Classroom<br>
         <select name="classroom" required>
           <option value="">Select your classroom</option>
-
-          <!-- M1 classrooms -->
           <optgroup label="Grade M1">
             <option value="M101">M101</option>
             <option value="M102">M102</option>
@@ -75,8 +70,6 @@
             <option value="M112">M112</option>
             <option value="M113">M113</option>
           </optgroup>
-
-          <!-- M2 classrooms -->
           <optgroup label="Grade M2">
             <option value="M201">M201</option>
             <option value="M202">M202</option>
@@ -96,42 +89,35 @@
       </label>
       <br><br>
 
-      <!-- Feedback input -->
       <label>Feedback<br>
         <textarea name="comment" rows="4" placeholder="Enter your feedback here..." required></textarea>
       </label>
       <br><br>
 
-      <!-- Submit button -->
-      <button type="submit">Send Response</button>
+      <button type="submit">Send Results</button>
     </form>
 
-    <!-- Response message area -->
     <p id="response"></p>
   </center>
 
   <script>
-    const form = document.getElementById('studentform'); // Form element
-    const responseEl = document.getElementById('response'); // Message display area
+    const form = document.getElementById('studentform');
+    const responseEl = document.getElementById('response');
 
     form.onsubmit = e => {
-      e.preventDefault(); // Prevent default form submit
+      e.preventDefault();
 
-      // Google Apps Script URL (must be deployed as a Web App)
       const scriptURL = 'https://script.google.com/macros/s/AKfycbwoMzmptzRnN7CK4s4ez1Bsv9Cfwq_1YNMqqGBm-by1myvaYDe7l-kUbAW7SM8FQiM/exec';
 
-      // Send form data using fetch()
       fetch(scriptURL, {
         method: 'POST',
         body: new URLSearchParams(new FormData(form))
       })
       .then(() => {
-        // Success message
         responseEl.textContent = "Survey submitted successfully. Thank you!";
-        form.reset(); // Reset form after submission
+        form.reset();
       })
       .catch(() => {
-        // Error message
         responseEl.textContent = "Oops! Something went wrong. Please try again.";
       });
     };
