@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>M.1-2 Student Form</title>
-
-  <!-- Load Rubik font from Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
   <style>
     body {
@@ -22,17 +20,35 @@
       color: #4B002A; /* Very dark pink */
     }
 
-    input, select, textarea, button {
+    input,
+    select,
+    textarea,
+    button {
       font-family: "Rubik", sans-serif;
       font-size: 1em;
       padding: 5px;
       margin-top: 5px;
-      border-radius: 10px; /* Rounded corners */
-      border: none; /* Optional: cleaner look */
+      border-radius: 10px;
+      border: none;
     }
 
+    /* Make Age input wider */
     input[name="age"] {
-      width: 150px; /* Make Age input wider */
+      width: 150px;
+      color: #000080; /* Navy Blue */
+    }
+
+    /* Text colors */
+    input[name="fullname"] {
+      color: #8B0000; /* Dark Red */
+    }
+
+    select[name="classroom"] {
+      color: #006400; /* Dark Green */
+    }
+
+    textarea[name="comment"] {
+      color: #556B2F; /* Dark yellowish-teal */
     }
 
     form {
@@ -47,17 +63,17 @@
     <h1>Form for Students in M1-2</h1>
 
     <form id="studentform">
-      <label>Name-Surname<br>
-        <input type="text" name="fullname" placeholder="Enter Name Surname" required>
+      <label>Name-Surname<br />
+        <input type="text" name="fullname" placeholder="Enter Name Surname" required />
       </label>
-      <br><br>
+      <br /><br />
 
-      <label>Age<br>
-        <input type="number" name="age" min="10" max="18" placeholder="Enter Age" required>
+      <label>Age<br />
+        <input type="number" name="age" min="10" max="18" placeholder="Enter Age" required />
       </label>
-      <br><br>
+      <br /><br />
 
-      <label>Classroom<br>
+      <label>Classroom<br />
         <select name="classroom" required>
           <option value="">Select your classroom</option>
           <optgroup label="Grade M1">
@@ -92,12 +108,12 @@
           </optgroup>
         </select>
       </label>
-      <br><br>
+      <br /><br />
 
-      <label>Feedback<br>
+      <label>Feedback<br />
         <textarea name="comment" rows="4" placeholder="Enter your feedback here..." required></textarea>
       </label>
-      <br><br>
+      <br /><br />
 
       <button type="submit">Send Results</button>
     </form>
@@ -106,25 +122,26 @@
   </center>
 
   <script>
-    const form = document.getElementById('studentform');
-    const responseEl = document.getElementById('response');
+    const form = document.getElementById("studentform");
+    const responseEl = document.getElementById("response");
 
-    form.onsubmit = e => {
+    form.onsubmit = (e) => {
       e.preventDefault();
 
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbwoMzmptzRnN7CK4s4ez1Bsv9Cfwq_1YNMqqGBm-by1myvaYDe7l-kUbAW7SM8FQiM/exec';
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbwoMzmptzRnN7CK4s4ez1Bsv9Cfwq_1YNMqqGBm-by1myvaYDe7l-kUbAW7SM8FQiM/exec";
 
       fetch(scriptURL, {
-        method: 'POST',
-        body: new URLSearchParams(new FormData(form))
+        method: "POST",
+        body: new URLSearchParams(new FormData(form)),
       })
-      .then(() => {
-        responseEl.textContent = "Survey submitted successfully. Thank you!";
-        form.reset();
-      })
-      .catch(() => {
-        responseEl.textContent = "Oops! Something went wrong. Please try again.";
-      });
+        .then(() => {
+          responseEl.textContent = "Survey submitted successfully. Thank you!";
+          form.reset();
+        })
+        .catch(() => {
+          responseEl.textContent = "Oops! Something went wrong. Please try again.";
+        });
     };
   </script>
 </body>
