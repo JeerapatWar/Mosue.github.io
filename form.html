@@ -20,35 +20,38 @@
       color: #4B002A; /* Very dark pink */
     }
 
-    input,
-    select,
-    textarea,
-    button {
+    input, select, textarea, button {
       font-family: "Rubik", sans-serif;
       font-size: 1em;
       padding: 5px;
       margin-top: 5px;
       border-radius: 10px;
-      border: none;
+      background-color: white; /* white background for contrast */
     }
 
-    /* Make Age input wider */
-    input[name="age"] {
-      width: 150px;
-      color: #000080; /* Navy Blue */
-    }
-
-    /* Text colors */
+    /* Name input: dark red text & outline */
     input[name="fullname"] {
-      color: #8B0000; /* Dark Red */
+      color: #8B0000;
+      border: 2px solid #8B0000;
     }
 
+    /* Age input: navy blue text & outline, wider */
+    input[name="age"] {
+      color: #000080;
+      border: 2px solid #000080;
+      width: 150px;
+    }
+
+    /* Classroom select: dark green text & outline */
     select[name="classroom"] {
-      color: #006400; /* Dark Green */
+      color: #006400;
+      border: 2px solid #006400;
     }
 
+    /* Feedback textarea: dark yellowish-teal text & outline */
     textarea[name="comment"] {
-      color: #556B2F; /* Dark yellowish-teal */
+      color: #556B2F;
+      border: 2px solid #556B2F;
     }
 
     form {
