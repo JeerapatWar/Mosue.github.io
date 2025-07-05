@@ -27,7 +27,7 @@
           <input type="number" name="age" min="10" max="18" placeholder="Enter Age">
         </lable>
         <br><br>
-        <lable>Class
+        <lable>Classroom
           <select name="classroom">
             <option value="">Classroom number</option>
             <option value="M101">M101</option>
@@ -68,6 +68,23 @@
       <button type="submit">send results</button>
       </form>
         <p id="response"></p>
+      <script>
+      const form = document.getElementById('studentform');
+      const responseEl = document.getElementbyId('response');
+      form.onsubmit = e =>{
+        e.preventDefault();
+      fetch('')
+      {
+        method:'POST'
+        body: new URLSearchParams(new FormData(form))
+      })
+        .then(() => {
+        responseEl.textContent="Survey Submitted Succesfully, Thank you for your response"
+        form.reset();       
+      })
+        .catch(() => responseEl.textcontent="Oops, an Error occured, please Try Again";
+      })
+      </script>
     </center>
 </body>
 </html>
