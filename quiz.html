@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <!-- Set character encoding and page title -->
+  <!-- Set charset and title -->
   <meta charset="utf-8">
   <title>Science General Quiz</title>
 
@@ -9,71 +10,83 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Start of dark theme styles -->
+  <!-- Main styles for dark layout and outline borders -->
   <style>
-    /* Set global font and dark background */
+    /* Set font and background image */
     body {
       font-family: "Ubuntu", sans-serif;
       font-weight: 500;
-      background-color: #121212;
-      color: #f1f1f1;
       margin: 0;
       padding: 0;
+      background: url('https://images8.alphacoders.com/131/1318499.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #f1f1f1;
     }
 
-    /* Header section with title */
+    /* Add dark overlay on top of background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
+    /* Header title bar */
     header {
-      background-color: #1f1f1f;
+      background-color: rgba(30, 30, 30, 0.9);
       color: white;
       padding: 20px;
       text-align: center;
       border-radius: 15px;
       margin: 20px auto;
       max-width: 800px;
+      border: 1px solid #888; /* Light grey outline */
     }
 
-    /* Outer container for all questions */
+    /* Wraps all the questions */
     .content {
       max-width: 800px;
       margin: auto;
       padding: 20px;
     }
 
-    /* Style each question block */
+    /* Each question block */
     .question-box {
-      background-color: #2a2a2a;
+      background-color: rgba(42, 42, 42, 0.9);
       padding: 20px;
       border-radius: 10px;
       margin-bottom: 20px;
+      border: 1px solid #777; /* Light grey border */
     }
 
-    /* Style for answer buttons */
+    /* Style for the answer buttons */
     .choices button {
       display: block;
       margin: 5px 0;
       padding: 10px;
       width: 100%;
-      background-color: #3a3a3a;
+      background-color: #2f2f2f;
       color: #f1f1f1;
-      cursor: pointer;
-      border: none;
+      border: 1px solid #666; /* Button border */
       border-radius: 5px;
       font-size: 16px;
+      cursor: pointer;
       transition: background-color 0.2s;
     }
 
-    /* Button hover effect */
+    /* Slight lightening on hover */
     .choices button:hover {
-      background-color: #505050;
+      background-color: #444;
     }
 
-    /* Correct answer color */
+    /* Color if the answer is correct */
     .correct {
       background-color: #2e7d32 !important;
       color: white;
     }
 
-    /* Wrong answer color */
+    /* Color if the answer is incorrect */
     .wrong {
       background-color: #c62828 !important;
       color: white;
@@ -82,12 +95,12 @@
 </head>
 <body>
 
-  <!-- Quiz title -->
+  <!-- Top header title -->
   <header>
     <h1>Science General Quiz</h1>
   </header>
 
-  <!-- All quiz questions start here -->
+  <!-- Quiz container -->
   <div class="content">
 
     <!-- Question 1 -->
@@ -201,34 +214,35 @@
     </div>
   </div>
 
-  <!-- JavaScript to check answers -->
+  <!-- JavaScript logic to check selected answer -->
   <script>
-    // This function runs when a button is clicked
     function checkAnswer(button, correctAnswer) {
-      // Get all buttons in the same question
       const allButtons = button.parentNode.querySelectorAll('button');
 
-      // Disable all buttons for this question
+      // Disable all buttons once an answer is picked
       allButtons.forEach(btn => btn.disabled = true);
 
-      // Check if answer is correct
+      // Show green if correct, red if wrong
       if (button.innerText === correctAnswer) {
-        button.classList.add('correct'); // Show green
+        button.classList.add('correct');
       } else {
-        button.classList.add('wrong');   // Show red
-        // Also mark the correct answer
+        button.classList.add('wrong');
+        // Highlight correct answer as green
         allButtons.forEach(btn => {
-          if (btn.innerText === correctAnswer) {
-            btn.classList.add('correct');
-          }
+          if (btn.innerText === correctAnswer) btn.classList.add('correct');
         });
       }
     }
   </script>
 </body>
 </html>
-/* 01-08   : Document setup, meta, title, fonts
-09-35   : Global CSS styles (dark mode, fonts, layout)
-36-44   : Header section (Quiz title)
-45-189  : Main quiz content (10 question boxes)
-190-202 : JavaScript logic (checkAnswer function)*/
+
+<!-- 
+========= TABLE OF CONTENTS =========
+
+Lines 01-08   : Head, fonts, title
+Lines 09-60   : Global styles (dark mode + outline)
+Lines 62-66   : Quiz header section
+Lines 68-202  : 10 quiz questions (in boxes)
+Lines 204-217 : JavaScript logic (checkAnswer function)
+-->
