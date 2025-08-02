@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Set charset and title -->
+  <!-- Set charset and page title -->
   <meta charset="utf-8">
   <title>Science General Quiz</title>
 
-  <!-- Load Google Fonts -->
+  <!-- Load fonts from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Main styles for dark layout and outline borders -->
+  <!-- Styles for dark mode with outlines -->
   <style>
-    /* Set font and background image */
+    /* Base font and background */
     body {
       font-family: "Ubuntu", sans-serif;
       font-weight: 500;
@@ -23,7 +23,7 @@
       color: #f1f1f1;
     }
 
-    /* Overlay for darkening the background image */
+    /* Add dark overlay on background */
     body::before {
       content: "";
       position: fixed;
@@ -32,9 +32,9 @@
       z-index: -1;
     }
 
-    /* Dark header with border */
+    /* Quiz title at top */
     header {
-      background-color: #111; /* darker header */
+      background-color: #111;
       color: white;
       padding: 20px;
       text-align: center;
@@ -44,26 +44,17 @@
       border: 1px solid #888;
     }
 
-    /* Outer content wrapper, also darker now */
-    .content {
-      max-width: 800px;
-      margin: auto;
+    /* Each question is in its own dark box */
+    .question-box {
+      background-color: #1a1a1a; /* darker shade */
       padding: 20px;
-      background-color: #141414; /* darker background box */
       border-radius: 10px;
+      margin: 20px auto;
+      max-width: 800px;
       border: 1px solid #666;
     }
 
-    /* Each individual question block */
-    .question-box {
-      background-color: rgba(42, 42, 42, 0.9);
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #777;
-    }
-
-    /* Choice buttons */
+    /* Style for all answer buttons */
     .choices button {
       display: block;
       margin: 5px 0;
@@ -82,13 +73,13 @@
       background-color: #444;
     }
 
-    /* Style for correct answer */
+    /* Mark correct answer */
     .correct {
       background-color: #2e7d32 !important;
       color: white;
     }
 
-    /* Style for wrong answer */
+    /* Mark incorrect answer */
     .wrong {
       background-color: #c62828 !important;
       color: white;
@@ -97,117 +88,122 @@
 </head>
 <body>
 
-  <!-- Header title -->
+  <!-- Quiz Title -->
   <header>
     <h1>Science General Quiz</h1>
   </header>
 
-  <!-- Outer content container -->
-  <div class="content">
-
-    <!-- 10 questions follow -->
-    <div class="question-box">
-      <p>1. What planet is known as the Red Planet?</p>
-      <div class="choices" id="q1">
-        <button onclick="checkAnswer(this, 'Mars')">Venus</button><br>
-        <button onclick="checkAnswer(this, 'Mars')">Saturn</button><br>
-        <button onclick="checkAnswer(this, 'Mars')">Mars</button><br>
-        <button onclick="checkAnswer(this, 'Mars')">Jupiter</button><br>
-      </div>
-    </div>
-
-    <div class="question-box">
-      <p>2. What gas do plants absorb for photosynthesis?</p>
-      <div class="choices" id="q2">
-        <button onclick="checkAnswer(this, 'Carbon Dioxide')">Oxygen</button><br>
-        <button onclick="checkAnswer(this, 'Carbon Dioxide')">Carbon Dioxide</button><br>
-        <button onclick="checkAnswer(this, 'Carbon Dioxide')">Hydrogen</button><br>
-        <button onclick="checkAnswer(this, 'Carbon Dioxide')">Nitrogen</button><br>
-      </div>
-    </div>
-
-    <div class="question-box">
-      <p>3. What is the chemical symbol for Sodium?</p>
-      <div class="choices" id="q3">
-        <button onclick="checkAnswer(this, 'Na')">So</button><br>
-        <button onclick="checkAnswer(this, 'Na')">Na</button><br>
-        <button onclick="checkAnswer(this, 'Na')">S</button><br>
-        <button onclick="checkAnswer(this, 'Na')">Sn</button><br>
-      </div>
-    </div>
-
-    <div class="question-box">
-      <p>4. Which scientist developed the theory of general relativity?</p>
-      <div class="choices" id="q4">
-        <button onclick="checkAnswer(this, 'Einstein')">Newton</button><br>
-        <button onclick="checkAnswer(this, 'Einstein')">Bohr</button><br>
-        <button onclick="checkAnswer(this, 'Einstein')">Einstein</button><br>
-        <button onclick="checkAnswer(this, 'Einstein')">Tesla</button><br>
-      </div>
-    </div>
-
-    <div class="question-box">
-      <p>5. What is the powerhouse of the cell?</p>
-      <div class="choices" id="q5">
-        <button onclick="checkAnswer(this, 'Mitochondria')">Nucleus</button><br>
-        <button onclick="checkAnswer(this, 'Mitochondria')">Chloroplast</button><br>
-        <button onclick="checkAnswer(this, 'Mitochondria')">Mitochondria</button><br>
-        <button onclick="checkAnswer(this, 'Mitochondria')">Ribosome</button><br>
-      </div>
-    </div>
-
-    <div class="question-box">
-      <p>6. Which part of an atom has no electrical charge?</p>
-      <div class="choices" id="q6">
-        <button onclick="checkAnswer(this, 'Neutron')">Electron</button><br>
-        <button onclick="checkAnswer(this, 'Neutron')">Proton</button><br>
-        <button onclick="checkAnswer(this, 'Neutron')">Neutron</button><br>
-        <button onclick="checkAnswer(this, 'Neutron')">Quark</button><br>
-      </div>
-    </div>
-
-    <div class="question-box">
-      <p>7. Which law explains why a rocket moves forward?</p>
-      <div class="choices" id="q7">
-        <button onclick="checkAnswer(this, 'Newton’s Third Law')">Einstein's Relativity</button><br>
-        <button onclick="checkAnswer(this, 'Newton’s Third Law')">Newton’s First Law</button><br>
-        <button onclick="checkAnswer(this, 'Newton’s Third Law')">Newton’s Third Law</button><br>
-        <button onclick="checkAnswer(this, 'Newton’s Third Law')">Kepler’s Law</button><br>
-      </div>
-    </div>
-
-    <div class="question-box">
-      <p>8. What type of bond involves the sharing of electron pairs?</p>
-      <div class="choices" id="q8">
-        <button onclick="checkAnswer(this, 'Covalent')">Ionic</button><br>
-        <button onclick="checkAnswer(this, 'Covalent')">Hydrogen</button><br>
-        <button onclick="checkAnswer(this, 'Covalent')">Metallic</button><br>
-        <button onclick="checkAnswer(this, 'Covalent')">Covalent</button><br>
-      </div>
-    </div>
-
-    <div class="question-box">
-      <p>9. What causes the bending of light through water?</p>
-      <div class="choices" id="q9">
-        <button onclick="checkAnswer(this, 'Refraction')">Reflection</button><br>
-        <button onclick="checkAnswer(this, 'Refraction')">Diffusion</button><br>
-        <button onclick="checkAnswer(this, 'Refraction')">Dispersion</button><br>
-        <button onclick="checkAnswer(this, 'Refraction')">Refraction</button><br>
-      </div>
-    </div>
-
-    <div class="question-box">
-      <p>10. What is the name of the particle that gives mass to others?</p>
-      <div class="choices" id="q10">
-        <button onclick="checkAnswer(this, 'Higgs boson')">Photon</button><br>
-        <button onclick="checkAnswer(this, 'Higgs boson')">Graviton</button><br>
-        <button onclick="checkAnswer(this, 'Higgs boson')">Higgs boson</button><br>
-        <button onclick="checkAnswer(this, 'Higgs boson')">Neutrino</button><br>
-      </div>
+  <!-- Question 1 -->
+  <div class="question-box">
+    <p>1. What planet is known as the Red Planet?</p>
+    <div class="choices" id="q1">
+      <button onclick="checkAnswer(this, 'Mars')">Venus</button><br>
+      <button onclick="checkAnswer(this, 'Mars')">Saturn</button><br>
+      <button onclick="checkAnswer(this, 'Mars')">Mars</button><br>
+      <button onclick="checkAnswer(this, 'Mars')">Jupiter</button><br>
     </div>
   </div>
 
-  <!-- JS function to check answer -->
+  <!-- Question 2 -->
+  <div class="question-box">
+    <p>2. What gas do plants absorb for photosynthesis?</p>
+    <div class="choices" id="q2">
+      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Oxygen</button><br>
+      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Carbon Dioxide</button><br>
+      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Hydrogen</button><br>
+      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Nitrogen</button><br>
+    </div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question-box">
+    <p>3. What is the chemical symbol for Sodium?</p>
+    <div class="choices" id="q3">
+      <button onclick="checkAnswer(this, 'Na')">So</button><br>
+      <button onclick="checkAnswer(this, 'Na')">Na</button><br>
+      <button onclick="checkAnswer(this, 'Na')">S</button><br>
+      <button onclick="checkAnswer(this, 'Na')">Sn</button><br>
+    </div>
+  </div>
+
+  <!-- Question 4 -->
+  <div class="question-box">
+    <p>4. Which scientist developed the theory of general relativity?</p>
+    <div class="choices" id="q4">
+      <button onclick="checkAnswer(this, 'Einstein')">Newton</button><br>
+      <button onclick="checkAnswer(this, 'Einstein')">Bohr</button><br>
+      <button onclick="checkAnswer(this, 'Einstein')">Einstein</button><br>
+      <button onclick="checkAnswer(this, 'Einstein')">Tesla</button><br>
+    </div>
+  </div>
+
+  <!-- Question 5 -->
+  <div class="question-box">
+    <p>5. What is the powerhouse of the cell?</p>
+    <div class="choices" id="q5">
+      <button onclick="checkAnswer(this, 'Mitochondria')">Nucleus</button><br>
+      <button onclick="checkAnswer(this, 'Mitochondria')">Chloroplast</button><br>
+      <button onclick="checkAnswer(this, 'Mitochondria')">Mitochondria</button><br>
+      <button onclick="checkAnswer(this, 'Mitochondria')">Ribosome</button><br>
+    </div>
+  </div>
+
+  <!-- Question 6 -->
+  <div class="question-box">
+    <p>6. Which part of an atom has no electrical charge?</p>
+    <div class="choices" id="q6">
+      <button onclick="checkAnswer(this, 'Neutron')">Electron</button><br>
+      <button onclick="checkAnswer(this, 'Neutron')">Proton</button><br>
+      <button onclick="checkAnswer(this, 'Neutron')">Neutron</button><br>
+      <button onclick="checkAnswer(this, 'Neutron')">Quark</button><br>
+    </div>
+  </div>
+
+  <!-- Question 7 -->
+  <div class="question-box">
+    <p>7. Which law explains why a rocket moves forward?</p>
+    <div class="choices" id="q7">
+      <button onclick="checkAnswer(this, 'Newton’s Third Law')">Einstein's Relativity</button><br>
+      <button onclick="checkAnswer(this, 'Newton’s Third Law')">Newton’s First Law</button><br>
+      <button onclick="checkAnswer(this, 'Newton’s Third Law')">Newton’s Third Law</button><br>
+      <button onclick="checkAnswer(this, 'Newton’s Third Law')">Kepler’s Law</button><br>
+    </div>
+  </div>
+
+  <!-- Question 8 -->
+  <div class="question-box">
+    <p>8. What type of bond involves the sharing of electron pairs?</p>
+    <div class="choices" id="q8">
+      <button onclick="checkAnswer(this, 'Covalent')">Ionic</button><br>
+      <button onclick="checkAnswer(this, 'Covalent')">Hydrogen</button><br>
+      <button onclick="checkAnswer(this, 'Covalent')">Metallic</button><br>
+      <button onclick="checkAnswer(this, 'Covalent')">Covalent</button><br>
+    </div>
+  </div>
+
+  <!-- Question 9 -->
+  <div class="question-box">
+    <p>9. What causes the bending of light through water?</p>
+    <div class="choices" id="q9">
+      <button onclick="checkAnswer(this, 'Refraction')">Reflection</button><br>
+      <button onclick="checkAnswer(this, 'Refraction')">Diffusion</button><br>
+      <button onclick="checkAnswer(this, 'Refraction')">Dispersion</button><br>
+      <button onclick="checkAnswer(this, 'Refraction')">Refraction</button><br>
+    </div>
+  </div>
+
+  <!-- Question 10 -->
+  <div class="question-box">
+    <p>10. What is the name of the particle that gives mass to others?</p>
+    <div class="choices" id="q10">
+      <button onclick="checkAnswer(this, 'Higgs boson')">Photon</button><br>
+      <button onclick="checkAnswer(this, 'Higgs boson')">Graviton</button><br>
+      <button onclick="checkAnswer(this, 'Higgs boson')">Higgs boson</button><br>
+      <button onclick="checkAnswer(this, 'Higgs boson')">Neutrino</button><br>
+    </div>
+  </div>
+
+  <!-- JS function to check answers -->
   <script>
     function checkAnswer(button, correctAnswer) {
       const allButtons = button.parentNode.querySelectorAll('button');
@@ -230,8 +226,8 @@
 ========= TABLE OF CONTENTS =========
 
 Lines 01–08   : <head> metadata and title
-Lines 09–98   : CSS styles (dark mode, no transition, outlines)
-Lines 100–102 : Page header title
-Lines 104–244 : 10 quiz questions (inside .content and .question-box)
-Lines 246–255 : JS: checkAnswer() function
+Lines 09–93   : CSS (no outer box, darker individual boxes)
+Lines 95–97   : Quiz header title
+Lines 99–239 : 10 individual question boxes
+Lines 241–251 : JavaScript checkAnswer() function
 -->
