@@ -1,3 +1,15 @@
+### ✅ Plan for Update:
+
+1. **Body background** → Replace bright image with a **neutral, dim background**.
+2. **Question container** → Wrap each question in its own `.question-box` styled with soft blue.
+3. **Reduce brightness** of buttons and main `.content` to calmer blues.
+4. Maintain functionality and structure.
+
+---
+
+### ✅ Final Updated Code:
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +22,13 @@
     body {
       font-family: "Ubuntu", sans-serif;
       font-weight: 500;
-      background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTExL3Jhd3BpeGVsX29mZmljZV8zMF9hYnN0cmFjdF9ncmFkaWVudF93aGl0ZV9iYWNrZ3JvdW5kX3ZlY3Rvcl9wcl9kZGY3ZTJiNC0wMjU3LTRjMTUtOWFjNS0xMmQwZTA0N2E4MWYuanBn.jpg');
-      background-size: cover;
+      background-color: #e8f0f5;
+      margin: 0;
+      padding: 0;
     }
 
     header {
-      background-color: darkblue;
+      background-color: #2c3e50;
       color: white;
       padding: 20px;
       text-align: center;
@@ -25,12 +38,16 @@
     }
 
     .content {
-      background-color: rgba(0,0,255,0.7);
-      color: white;
-      padding: 30px;
       max-width: 800px;
       margin: auto;
-      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .question-box {
+      background-color: #d6e4f0;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
     }
 
     .choices button {
@@ -38,15 +55,27 @@
       margin: 5px 0;
       padding: 10px;
       width: 100%;
-      background-color: skyblue;
+      background-color: #a4c4dd;
       cursor: pointer;
       border: none;
       border-radius: 5px;
       font-size: 16px;
+      transition: background-color 0.2s;
     }
 
-    .correct { background-color: green !important; color: white; }
-    .wrong { background-color: red !important; color: white; }
+    .choices button:hover {
+      background-color: #8ab4d0;
+    }
+
+    .correct {
+      background-color: #4caf50 !important;
+      color: white;
+    }
+
+    .wrong {
+      background-color: #e74c3c !important;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -55,49 +84,54 @@
   </header>
 
   <div class="content">
-    <!-- Q1 -->
-    <p>1. What planet is known as the Red Planet?</p>
-    <div class="choices" id="q1">
-      <button onclick="checkAnswer(this, 'Mars')">Earth</button><br>
-      <button onclick="checkAnswer(this, 'Mars')">Venus</button><br>
-      <button onclick="checkAnswer(this, 'Mars')">Mars</button><br>
-      <button onclick="checkAnswer(this, 'Mars')">Jupiter</button><br>
-    </div><br>
+    <div class="question-box">
+      <p>1. What planet is known as the Red Planet?</p>
+      <div class="choices" id="q1">
+        <button onclick="checkAnswer(this, 'Mars')">Earth</button><br>
+        <button onclick="checkAnswer(this, 'Mars')">Venus</button><br>
+        <button onclick="checkAnswer(this, 'Mars')">Mars</button><br>
+        <button onclick="checkAnswer(this, 'Mars')">Jupiter</button><br>
+      </div>
+    </div>
 
-    <!-- Q2 -->
-    <p>2. What gas do plants absorb from the atmosphere?</p>
-    <div class="choices" id="q2">
-      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Oxygen</button><br>
-      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Nitrogen</button><br>
-      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Carbon Dioxide</button><br>
-      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Hydrogen</button><br>
-    </div><br>
+    <div class="question-box">
+      <p>2. What gas do plants absorb from the atmosphere?</p>
+      <div class="choices" id="q2">
+        <button onclick="checkAnswer(this, 'Carbon Dioxide')">Oxygen</button><br>
+        <button onclick="checkAnswer(this, 'Carbon Dioxide')">Nitrogen</button><br>
+        <button onclick="checkAnswer(this, 'Carbon Dioxide')">Carbon Dioxide</button><br>
+        <button onclick="checkAnswer(this, 'Carbon Dioxide')">Hydrogen</button><br>
+      </div>
+    </div>
 
-    <!-- Q3 -->
-    <p>3. What is H<sub>2</sub>O commonly known as?</p>
-    <div class="choices" id="q3">
-      <button onclick="checkAnswer(this, 'Water')">Water</button><br>
-      <button onclick="checkAnswer(this, 'Water')">Oxygen</button><br>
-      <button onclick="checkAnswer(this, 'Water')">Salt</button><br>
-      <button onclick="checkAnswer(this, 'Water')">Hydrogen</button><br>
-    </div><br>
+    <div class="question-box">
+      <p>3. What is H<sub>2</sub>O commonly known as?</p>
+      <div class="choices" id="q3">
+        <button onclick="checkAnswer(this, 'Water')">Water</button><br>
+        <button onclick="checkAnswer(this, 'Water')">Oxygen</button><br>
+        <button onclick="checkAnswer(this, 'Water')">Salt</button><br>
+        <button onclick="checkAnswer(this, 'Water')">Hydrogen</button><br>
+      </div>
+    </div>
 
-    <!-- Q4 -->
-    <p>4. How many bones are in the adult human body?</p>
-    <div class="choices" id="q4">
-      <button onclick="checkAnswer(this, '206')">208</button><br>
-      <button onclick="checkAnswer(this, '206')">204</button><br>
-      <button onclick="checkAnswer(this, '206')">206</button><br>
-      <button onclick="checkAnswer(this, '206')">210</button><br>
-    </div><br>
+    <div class="question-box">
+      <p>4. How many bones are in the adult human body?</p>
+      <div class="choices" id="q4">
+        <button onclick="checkAnswer(this, '206')">208</button><br>
+        <button onclick="checkAnswer(this, '206')">204</button><br>
+        <button onclick="checkAnswer(this, '206')">206</button><br>
+        <button onclick="checkAnswer(this, '206')">210</button><br>
+      </div>
+    </div>
 
-    <!-- Q5 -->
-    <p>5. Which part of the plant conducts photosynthesis?</p>
-    <div class="choices" id="q5">
-      <button onclick="checkAnswer(this, 'Leaves')">Roots</button><br>
-      <button onclick="checkAnswer(this, 'Leaves')">Stem</button><br>
-      <button onclick="checkAnswer(this, 'Leaves')">Leaves</button><br>
-      <button onclick="checkAnswer(this, 'Leaves')">Flowers</button><br>
+    <div class="question-box">
+      <p>5. Which part of the plant conducts photosynthesis?</p>
+      <div class="choices" id="q5">
+        <button onclick="checkAnswer(this, 'Leaves')">Roots</button><br>
+        <button onclick="checkAnswer(this, 'Leaves')">Stem</button><br>
+        <button onclick="checkAnswer(this, 'Leaves')">Leaves</button><br>
+        <button onclick="checkAnswer(this, 'Leaves')">Flowers</button><br>
+      </div>
     </div>
   </div>
 
@@ -118,3 +152,12 @@
   </script>
 </body>
 </html>
+```
+
+---
+
+### 🟢 Suggestions:
+
+a. Add a score counter after each question
+b. Show final result when all 5 are answered
+c. Add a dark mode toggle switch
