@@ -1,16 +1,120 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset = "utf=8">
-    <title>General Quiz</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Thai:wght@100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-<style>
-  body{font-family: "Ubuntu", sans-serif;
-  font-weight: 500;
-  font-style: normal;}
-</style>
-  </head>
-  <body background = "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTExL3Jhd3BpeGVsX29mZmljZV8zMF9hYnN0cmFjdF9ncmFkaWVudF93aGl0ZV9iYWNrZ3JvdW5kX3ZlY3Rvcl9wcl9kZGY3ZTJiNC0wMjU3LTRjMTUtOWFjNS0xMmQwZTA0N2E4MWYuanBn.jpg">
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Science General Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTExL3Jhd3BpeGVsX29mZmljZV8zMF9hYnN0cmFjdF9ncmFkaWVudF93aGl0ZV9iYWNrZ3JvdW5kX3ZlY3Rvcl9wcl9kZGY3ZTJiNC0wMjU3LTRjMTUtOWFjNS0xMmQwZTA0N2E4MWYuanBn.jpg');
+      background-size: cover;
+    }
+
+    header {
+      background-color: darkblue;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 15px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    .content {
+      background-color: rgba(0,0,255,0.7);
+      color: white;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+      border-radius: 15px;
+    }
+
+    .choices button {
+      display: block;
+      margin: 5px 0;
+      padding: 10px;
+      width: 100%;
+      background-color: skyblue;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .correct { background-color: green !important; color: white; }
+    .wrong { background-color: red !important; color: white; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Science General Quiz</h1>
+  </header>
+
+  <div class="content">
+    <!-- Q1 -->
+    <p>1. What planet is known as the Red Planet?</p>
+    <div class="choices" id="q1">
+      <button onclick="checkAnswer(this, 'Mars')">Earth</button><br>
+      <button onclick="checkAnswer(this, 'Mars')">Venus</button><br>
+      <button onclick="checkAnswer(this, 'Mars')">Mars</button><br>
+      <button onclick="checkAnswer(this, 'Mars')">Jupiter</button><br>
+    </div><br>
+
+    <!-- Q2 -->
+    <p>2. What gas do plants absorb from the atmosphere?</p>
+    <div class="choices" id="q2">
+      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Oxygen</button><br>
+      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Nitrogen</button><br>
+      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Carbon Dioxide</button><br>
+      <button onclick="checkAnswer(this, 'Carbon Dioxide')">Hydrogen</button><br>
+    </div><br>
+
+    <!-- Q3 -->
+    <p>3. What is H<sub>2</sub>O commonly known as?</p>
+    <div class="choices" id="q3">
+      <button onclick="checkAnswer(this, 'Water')">Water</button><br>
+      <button onclick="checkAnswer(this, 'Water')">Oxygen</button><br>
+      <button onclick="checkAnswer(this, 'Water')">Salt</button><br>
+      <button onclick="checkAnswer(this, 'Water')">Hydrogen</button><br>
+    </div><br>
+
+    <!-- Q4 -->
+    <p>4. How many bones are in the adult human body?</p>
+    <div class="choices" id="q4">
+      <button onclick="checkAnswer(this, '206')">208</button><br>
+      <button onclick="checkAnswer(this, '206')">204</button><br>
+      <button onclick="checkAnswer(this, '206')">206</button><br>
+      <button onclick="checkAnswer(this, '206')">210</button><br>
+    </div><br>
+
+    <!-- Q5 -->
+    <p>5. Which part of the plant conducts photosynthesis?</p>
+    <div class="choices" id="q5">
+      <button onclick="checkAnswer(this, 'Leaves')">Roots</button><br>
+      <button onclick="checkAnswer(this, 'Leaves')">Stem</button><br>
+      <button onclick="checkAnswer(this, 'Leaves')">Leaves</button><br>
+      <button onclick="checkAnswer(this, 'Leaves')">Flowers</button><br>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer(button, correctAnswer) {
+      const allButtons = button.parentNode.querySelectorAll('button');
+      allButtons.forEach(btn => btn.disabled = true);
+
+      if (button.innerText === correctAnswer) {
+        button.classList.add('correct');
+      } else {
+        button.classList.add('wrong');
+        allButtons.forEach(btn => {
+          if (btn.innerText === correctAnswer) btn.classList.add('correct');
+        });
+      }
+    }
+  </script>
+</body>
 </html>
