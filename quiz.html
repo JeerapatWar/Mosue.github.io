@@ -23,7 +23,7 @@
       color: #f1f1f1;
     }
 
-    /* Add dark overlay on top of background */
+    /* Overlay for darkening the background image */
     body::before {
       content: "";
       position: fixed;
@@ -32,35 +32,38 @@
       z-index: -1;
     }
 
-    /* Header title bar */
+    /* Dark header with border */
     header {
-      background-color: rgba(30, 30, 30, 0.9);
+      background-color: #111; /* darker header */
       color: white;
       padding: 20px;
       text-align: center;
       border-radius: 15px;
       margin: 20px auto;
       max-width: 800px;
-      border: 1px solid #888; /* Light grey outline */
+      border: 1px solid #888;
     }
 
-    /* Wraps all the questions */
+    /* Outer content wrapper, also darker now */
     .content {
       max-width: 800px;
       margin: auto;
       padding: 20px;
+      background-color: #141414; /* darker background box */
+      border-radius: 10px;
+      border: 1px solid #666;
     }
 
-    /* Each question block */
+    /* Each individual question block */
     .question-box {
       background-color: rgba(42, 42, 42, 0.9);
       padding: 20px;
       border-radius: 10px;
       margin-bottom: 20px;
-      border: 1px solid #777; /* Light grey border */
+      border: 1px solid #777;
     }
 
-    /* Style for the answer buttons */
+    /* Choice buttons */
     .choices button {
       display: block;
       margin: 5px 0;
@@ -68,25 +71,24 @@
       width: 100%;
       background-color: #2f2f2f;
       color: #f1f1f1;
-      border: 1px solid #666; /* Button border */
+      border: 1px solid #666;
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.2s;
     }
 
-    /* Slight lightening on hover */
+    /* No transition effect */
     .choices button:hover {
       background-color: #444;
     }
 
-    /* Color if the answer is correct */
+    /* Style for correct answer */
     .correct {
       background-color: #2e7d32 !important;
       color: white;
     }
 
-    /* Color if the answer is incorrect */
+    /* Style for wrong answer */
     .wrong {
       background-color: #c62828 !important;
       color: white;
@@ -95,15 +97,15 @@
 </head>
 <body>
 
-  <!-- Top header title -->
+  <!-- Header title -->
   <header>
     <h1>Science General Quiz</h1>
   </header>
 
-  <!-- Quiz container -->
+  <!-- Outer content container -->
   <div class="content">
 
-    <!-- Question 1 -->
+    <!-- 10 questions follow -->
     <div class="question-box">
       <p>1. What planet is known as the Red Planet?</p>
       <div class="choices" id="q1">
@@ -114,7 +116,6 @@
       </div>
     </div>
 
-    <!-- Question 2 -->
     <div class="question-box">
       <p>2. What gas do plants absorb for photosynthesis?</p>
       <div class="choices" id="q2">
@@ -125,7 +126,6 @@
       </div>
     </div>
 
-    <!-- Question 3 -->
     <div class="question-box">
       <p>3. What is the chemical symbol for Sodium?</p>
       <div class="choices" id="q3">
@@ -136,7 +136,6 @@
       </div>
     </div>
 
-    <!-- Question 4 -->
     <div class="question-box">
       <p>4. Which scientist developed the theory of general relativity?</p>
       <div class="choices" id="q4">
@@ -147,7 +146,6 @@
       </div>
     </div>
 
-    <!-- Question 5 -->
     <div class="question-box">
       <p>5. What is the powerhouse of the cell?</p>
       <div class="choices" id="q5">
@@ -158,7 +156,6 @@
       </div>
     </div>
 
-    <!-- Question 6 -->
     <div class="question-box">
       <p>6. Which part of an atom has no electrical charge?</p>
       <div class="choices" id="q6">
@@ -169,7 +166,6 @@
       </div>
     </div>
 
-    <!-- Question 7 -->
     <div class="question-box">
       <p>7. Which law explains why a rocket moves forward?</p>
       <div class="choices" id="q7">
@@ -180,7 +176,6 @@
       </div>
     </div>
 
-    <!-- Question 8 -->
     <div class="question-box">
       <p>8. What type of bond involves the sharing of electron pairs?</p>
       <div class="choices" id="q8">
@@ -191,7 +186,6 @@
       </div>
     </div>
 
-    <!-- Question 9 -->
     <div class="question-box">
       <p>9. What causes the bending of light through water?</p>
       <div class="choices" id="q9">
@@ -202,7 +196,6 @@
       </div>
     </div>
 
-    <!-- Question 10 -->
     <div class="question-box">
       <p>10. What is the name of the particle that gives mass to others?</p>
       <div class="choices" id="q10">
@@ -214,20 +207,16 @@
     </div>
   </div>
 
-  <!-- JavaScript logic to check selected answer -->
+  <!-- JS function to check answer -->
   <script>
     function checkAnswer(button, correctAnswer) {
       const allButtons = button.parentNode.querySelectorAll('button');
-
-      // Disable all buttons once an answer is picked
       allButtons.forEach(btn => btn.disabled = true);
 
-      // Show green if correct, red if wrong
       if (button.innerText === correctAnswer) {
         button.classList.add('correct');
       } else {
         button.classList.add('wrong');
-        // Highlight correct answer as green
         allButtons.forEach(btn => {
           if (btn.innerText === correctAnswer) btn.classList.add('correct');
         });
@@ -240,9 +229,9 @@
 <!-- 
 ========= TABLE OF CONTENTS =========
 
-Lines 01-08   : Head, fonts, title
-Lines 09-60   : Global styles (dark mode + outline)
-Lines 62-66   : Quiz header section
-Lines 68-202  : 10 quiz questions (in boxes)
-Lines 204-217 : JavaScript logic (checkAnswer function)
+Lines 01–08   : <head> metadata and title
+Lines 09–98   : CSS styles (dark mode, no transition, outlines)
+Lines 100–102 : Page header title
+Lines 104–244 : 10 quiz questions (inside .content and .question-box)
+Lines 246–255 : JS: checkAnswer() function
 -->
