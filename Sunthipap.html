@@ -1,49 +1,197 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Santhipap day</title>
-    <body boackground = "https://pictures.altai-travel.com/1920x1040/mount-everest-aerial-view-himalayas-istock-3745.jpg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Playpen+Sans+Thai:wght@100..800&family=Proza+Libre&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<head>
+  <!-- Set charset and page title -->
+  <meta charset="utf-8">
+  <title>Thai Peace Day Quiz</title>
+
+  <!-- Load fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+  <!-- Styles (tweaked colors only) -->
   <style>
-    body{.lobster-regular {
-  font-family: "Lobster", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-  header{background: rgba(0,0,50,0.7)
-         padding: 20px;
-         text-align: center;
-         border-radius: 20px;
-        }
-  section{background: rgba(0,0,0,0.7)
-          padding:15px;
-          margin:20px auto;
-          width: 80%;
-          border-radius: 10px;
-         }
+    body {
+      font-family: "Ubuntu", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+      background-size: cover;
+      color: #f0f0f0;
+    }
 
-  p{text-indent:2em}
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 20, 40, 0.75);
+      z-index: -1;
+    }
 
-    mark{background: rgba(40,250,40,0.7)
+    header {
+      background-color: rgba(0, 100, 180, 0.8);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 15px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
 
-  button{padding: 8px 15px;
-         margin:5px;
-         border:none;
-         border-radius: 5px;
-         background: rgba(0,150,150,0.7)
-         color: rgba(0,0,0,0.7);
-         cursor:poniter;
-  .correct{background-color: rgba(10,200, 10,0.9)
-  .incorrect{background-color: rgba(200,10,10,0.9)
-             <section>
-             <h1><mark>what is santhipap day thialand</mark></h1>
-          <p> question 1
-</p>
-             <br>br>
-             etc. etc.
-         
+    .question-box {
+      background-color: rgba(20, 30, 50, 0.85);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+      border: 1px solid #555;
+    }
+
+    .choices button {
+      display: block;
+      margin: 5px 0;
+      padding: 10px;
+      width: 100%;
+      background-color: #1a3d5a;
+      color: #f0f0f0;
+      border: 1px solid #444;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .choices button:hover {
+      background-color: #2a5678;
+    }
+
+    .correct {
+      background-color: #2e7d32 !important;
+      color: white;
+    }
+
+    .wrong {
+      background-color: #c62828 !important;
+      color: white;
+    }
+
+    .top-image {
+      text-align: center;
+      margin: 20px;
+    }
+    .top-image img {
+      border-radius: 15px;
+      border: solid 4px #1e90ff;
+      width: 300px;
+    }
+
+    .video-box {
+      text-align: center;
+      margin: 30px;
+    }
+    .video-box iframe {
+      border-radius: 15px;
+      border: none;
+    }
+
+    footer {
+      background-color: rgba(0, 100, 180, 0.8);
+      padding: 10px;
+      text-align: center;
+      border-radius: 15px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
   </style>
-  </head>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>🌏 Thai Peace Day Quiz 🌏<br>August 16</h1>
+  </header>
+
+  <!-- Picture at the start -->
+  <div class="top-image">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Pridi_Phanomyong.jpg" alt="Pridi Phanomyong">
+  </div>
+
+  <!-- Quiz Questions -->
+  <div class="question-box">
+    <p>1. วันสันติภาพไทยตรงกับวันที่เท่าไหร่ของทุกปี?</p>
+    <div class="choices" id="q1">
+      <button onclick="checkAnswer(this, '16 สิงหาคม')">16 สิงหาคม</button>
+      <button onclick="checkAnswer(this, '16 สิงหาคม')">12 สิงหาคม</button>
+      <button onclick="checkAnswer(this, '16 สิงหาคม')">5 ธันวาคม</button>
+      <button onclick="checkAnswer(this, '16 สิงหาคม')">24 มิถุนายน</button>
+    </div>
+  </div>
+
+  <div class="question-box">
+    <p>2. ใครเป็นหัวหน้าขบวนการเสรีไทยที่มีบทบาทสำคัญในวันสันติภาพไทย?</p>
+    <div class="choices" id="q2">
+      <button onclick="checkAnswer(this, 'นายปรีดี พนมยงค์')">นายทวี บุณยเกตุ</button>
+      <button onclick="checkAnswer(this, 'นายปรีดี พนมยงค์')">นายปรีดี พนมยงค์</button>
+      <button onclick="checkAnswer(this, 'นายปรีดี พนมยงค์')">จอมพล ป. พิบูลสงคราม</button>
+      <button onclick="checkAnswer(this, 'นายปรีดี พนมยงค์')">รัชกาลที่ 8</button>
+    </div>
+  </div>
+
+  <div class="question-box">
+    <p>3. เหตุการณ์ใดเป็นสาเหตุให้มีการประกาศสันติภาพไทย?</p>
+    <div class="choices" id="q3">
+      <button onclick="checkAnswer(this, 'การสิ้นสุดสงครามโลกครั้งที่ 2')">การสิ้นสุดสงครามโลกครั้งที่ 2</button>
+      <button onclick="checkAnswer(this, 'การสิ้นสุดสงครามโลกครั้งที่ 2')">การประกาศรัฐธรรมนูญ</button>
+      <button onclick="checkAnswer(this, 'การสิ้นสุดสงครามโลกครั้งที่ 2')">การปฏิวัติสยาม</button>
+      <button onclick="checkAnswer(this, 'การสิ้นสุดสงครามโลกครั้งที่ 2')">การสวรรคตของรัชกาลที่ 8</button>
+    </div>
+  </div>
+
+  <div class="question-box">
+    <p>4. ขบวนการเสรีไทยมีบทบาทสำคัญในด้านใด?</p>
+    <div class="choices" id="q4">
+      <button onclick="checkAnswer(this, 'การกอบกู้เอกราชและอธิปไตยของไทย')">การรณรงค์เลือกตั้ง</button>
+      <button onclick="checkAnswer(this, 'การกอบกู้เอกราชและอธิปไตยของไทย')">การกอบกู้เอกราชและอธิปไตยของไทย</button>
+      <button onclick="checkAnswer(this, 'การกอบกู้เอกราชและอธิปไตยของไทย')">การสร้างโครงสร้างพื้นฐาน</button>
+      <button onclick="checkAnswer(this, 'การกอบกู้เอกราชและอธิปไตยของไทย')">การปฏิรูปการศึกษา</button>
+    </div>
+  </div>
+
+  <div class="question-box">
+    <p>5. วัตถุประสงค์ของการจัดงานวันสันติภาพไทยคือข้อใด?</p>
+    <div class="choices" id="q5">
+      <button onclick="checkAnswer(this, 'รำลึกและเผยแพร่ความสำคัญของสันติภาพ')">เฉลิมฉลองการขึ้นครองราชย์</button>
+      <button onclick="checkAnswer(this, 'รำลึกและเผยแพร่ความสำคัญของสันติภาพ')">รำลึกและเผยแพร่ความสำคัญของสันติภาพ</button>
+      <button onclick="checkAnswer(this, 'รำลึกและเผยแพร่ความสำคัญของสันติภาพ')">ประกาศสงครามกับประเทศอื่น</button>
+      <button onclick="checkAnswer(this, 'รำลึกและเผยแพร่ความสำคัญของสันติภาพ')">เฉลิมฉลองปีใหม่</button>
+    </div>
+  </div>
+
+  <!-- Video at the end -->
+  <div class="video-box">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY" title="Thai Peace Day Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; JeerapatWar on GitHub / Mosue
+  </footer>
+
+  <!-- JS function to check answers -->
+  <script>
+    function checkAnswer(button, correctAnswer) {
+      const allButtons = button.parentNode.querySelectorAll('button');
+      allButtons.forEach(btn => btn.disabled = true);
+
+      if (button.innerText === correctAnswer) {
+        button.classList.add('correct');
+      } else {
+        button.classList.add('wrong');
+        allButtons.forEach(btn => {
+          if (btn.innerText === correctAnswer) btn.classList.add('correct');
+        });
+      }
+    }
+  </script>
+</body>
 </html>
