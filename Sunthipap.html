@@ -3,7 +3,7 @@
 <head>
   <!-- Set charset and page title -->
   <meta charset="utf-8">
-  <title>Thai Peace Day Quiz</title>
+  <title>Thai Peace Day</title>
 
   <!-- Load fonts from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,7 +70,7 @@
       color: white;
     }
 
-    .wrong {
+    .incorrect {
       background-color: #c62828 !important;
       color: white;
     }
@@ -108,7 +108,7 @@
 
   <!-- Header -->
   <header>
-    <h1>🌏 Thai Peace Day Quiz 🌏<br>August 16</h1>
+    <h1> Thai Peace Day Quiz <br>August 16</h1>
   </header>
 
   <!-- Picture at the start -->
@@ -186,7 +186,7 @@
       if (button.innerText === correctAnswer) {
         button.classList.add('correct');
       } else {
-        button.classList.add('wrong');
+        button.classList.add('incorrect');
         allButtons.forEach(btn => {
           if (btn.innerText === correctAnswer) btn.classList.add('correct');
         });
