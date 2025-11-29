@@ -14,94 +14,204 @@
       font-family: "Thasadith", sans-serif;
       font-weight: 400;
       font-style: normal;
-      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJKNopN_sUPBoTlEb8ztWEC2QoW5SGrQXmrg&s");
-      background-size: cover;
-      background-attachment: fixed;
       margin: 0;
+      background: linear-gradient(120deg, #ff9a9e, #a18cd1, #fbc2eb);
+      background-size: 300% 300%;
+      animation: glowcolors 10s ease-in-out infinite;
+    }
+
+    @keyframes glowcolors {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     header {
-      background: linear-gradient(hotpink, skyblue);
       padding: 30px;
       text-align: left;
     }
 
+    /* translucent glass boxes */
+    .glass-box {
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 18px;
+      padding: 18px 22px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
     h1 {
       margin: 0;
+      font-size: 26px;
     }
 
     .school-buttons {
-      margin-top: 20px;
+      margin-top: 18px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
-    /* base style for all buttons */
     .school-button {
       font-family: "Thasadith", sans-serif;
       font-size: 16px;
       padding: 10px 18px;
-      border-radius: 6px;
+      border-radius: 999px;
       border: none;
       cursor: pointer;
       color: #000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.2s ease;
     }
 
     .school-button:hover {
-      opacity: 0.9;
+      opacity: 0.95;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
-    /* Suankularb: pink–blue (ชมพู–ฟ้า) */
+    /* button gradients */
     .btn-sk {
       background: linear-gradient(135deg, #ff7eb9, #7ec8ff);
     }
 
-    /* Debsirin: green–yellow (เขียว–เหลือง) */
     .btn-debsirin {
       background: linear-gradient(135deg, #2ecc71, #f1c40f);
     }
 
-    /* Assumption: red–white */
     .btn-ac {
       background: linear-gradient(135deg, #ff4b5c, #ffffff);
     }
 
-    /* Bangkok Christian: purple–gold */
     .btn-bcc {
       background: linear-gradient(135deg, #7f00ff, #f9d423);
+    }
+
+    /* image grid container */
+    .school-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 10px 30px 40px;
+    }
+
+    /* each card: still uses a wrapper for layout, but no classes on img elements */
+    .school-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .school-card img:nth-of-type(1) {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .school-card img:nth-of-type(2) {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 190px;
+      object-fit: contain;
+      background: #ffffff;
+      opacity: 0;
+      transform: scale(1.08);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .school-card:hover img:nth-of-type(1) {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+
+    .school-card:hover img:nth-of-type(2) {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .school-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 6px 10px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+      color: #fff;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>
-      <marquee>
-        <mark>
-          Suankularb Wittayalai SK 🌹
-          Bangkok Christian BCC ✝️
-          Debsirin D.S. 🎋
-          Assumption AC 🎀
-        </mark>
-      </marquee>
-    </h1>
+    <!-- translucent box for marquee text -->
+    <div class="glass-box">
+      <h1>
+        <marquee>
+          <mark>
+            Suankularb Wittayalai SK 🌹
+            Bangkok Christian BCC ✝️
+            Debsirin D.S. 🎋
+            Assumption AC 🎀
+          </mark>
+        </marquee>
+      </h1>
+    </div>
 
-    <div class="school-buttons">
-      <button class="school-button btn-sk" onclick="location.href='https://www.sk.ac.th/'">
-        [translate:โรงเรียนสวนกุหลาบวิทยาลัย]
-      </button>
-      <button class="school-button btn-debsirin" onclick="location.href='https://www.debsirin.ac.th/'">
-        [translate:โรงเรียนเทพศิรินทร์]
-      </button>
-      <button class="school-button btn-ac" onclick="location.href='https://www.assumption.ac.th/'">
-        [translate:โรงเรียนอัสสัมชัญ]
-      </button>
-      <button class="school-button btn-bcc" onclick="location.href='https://www.bcc.ac.th/'">
-        [translate:โรงเรียนกรุงเทพคริสเตียนวิทยาลัย]
-      </button>
+    <!-- translucent box for buttons -->
+    <div class="glass-box" style="margin-top: 16px;">
+      <div class="school-buttons">
+        <button class="school-button btn-sk" onclick="location.href='https://www.sk.ac.th/'">
+          [translate:โรงเรียนสวนกุหลาบวิทยาลัย]
+        </button>
+        <button class="school-button btn-debsirin" onclick="location.href='https://www.debsirin.ac.th/'">
+          [translate:โรงเรียนเทพศิรินทร์]
+        </button>
+        <button class="school-button btn-ac" onclick="location.href='https://www.assumption.ac.th/'">
+          [translate:โรงเรียนอัสสัมชัญ]
+        </button>
+        <button class="school-button btn-bcc" onclick="location.href='https://www.bcc.ac.th/'">
+          [translate:โรงเรียนกรุงเทพคริสเตียนวิทยาลัย]
+        </button>
+      </div>
     </div>
   </header>
+
+  <section class="school-images">
+    <!-- Suankularb -->
+    <a class="school-card" href="https://www.sk.ac.th/" target="_blank">
+      <img src="https://media.licdn.com/dms/image/v2/C511BAQEzkJhHSfeYhg/company-background_10000/company-background_10000/0/1583904285010/suankularb_wittayalai_highschool_cover?e=2147483647&v=beta&t=WJWwXjFWlB9EUYfRIt4UJKSltOnfq-IoFrLE2RMU13c" alt="Suankularb Wittayalai School">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Suankularb_Wittayalai_School_emblem.png/1200px-Suankularb_Wittayalai_School_emblem.png" alt="Suankularb emblem">
+      <div class="school-label">Suankularb Wittayalai (SK)</div>
+    </a>
+
+    <!-- Bangkok Christian -->
+    <a class="school-card" href="https://www.bcc.ac.th/" target="_blank">
+      <img src="https://ple.co.th/wp-content/uploads/2021/12/%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E-%E0%B8%84%E0%B8%A3%E0%B8%B4%E0%B8%AA%E0%B9%80%E0%B8%95%E0%B8%B5%E0%B8%A2%E0%B8%9903.jpg" alt="Bangkok Christian College campus">
+      <img src="https://upload.wikimedia.org/wikipedia/en/2/29/Bangkok_Christian_College_logo.png" alt="Bangkok Christian College logo">
+      <div class="school-label">Bangkok Christian College (BCC)</div>
+    </a>
+
+    <!-- Debsirin -->
+    <a class="school-card" href="https://www.debsirin.ac.th/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/%E0%B8%95%E0%B8%B6%E0%B8%81%E0%B9%81%E0%B8%A1%E0%B9%89%E0%B8%99%E0%B8%A8%E0%B8%B6%E0%B8%81%E0%B8%A9%E0%B8%B2%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99.JPG" alt="Debsirin School campus">
+      <img src="https://upload.wikimedia.org/wikipedia/th/4/4f/%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A8%E0%B8%B4%E0%B8%A3%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B9%8C.svg" alt="Debsirin School emblem">
+      <div class="school-label">Debsirin School (D.S.)</div>
+    </a>
+
+    <!-- Assumption -->
+    <a class="school-card" href="https://www.assumption.ac.th/" target="_blank">
+      <img src="https://www.assumption.ac.th/assets/img/aboutAC/aboutAC-10.jpg" alt="Assumption College campus">
+      <img src="https://yt3.googleusercontent.com/VrvAp_1Wh6cXV-xB7RjpDl2KTdtwxuTubTC4XdJ2pzM9l0v65n4IAt7AwrbZFTqnqbE3VpLQZA=s900-c-k-c0x00ffffff-no-rj" alt="Assumption College logo">
+      <div class="school-label">Assumption College (AC)</div>
+    </a>
+  </section>
 </body>
 </html>
-
-@keyframes glowcolors{
