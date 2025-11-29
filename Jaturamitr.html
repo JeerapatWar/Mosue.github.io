@@ -4,67 +4,63 @@
   <meta charset="UTF-8">
   <title>Jaturamitr 31st</title>
 
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Playpen+Sans+Thai:wght@100..800&family=Thasadith:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
+  <!-- Soccer Cursor -->
+  <a href="https://www.cursors-4u.com/cursor/2005/10/07/spo61.html"
+   target="_blank" title="Soccer Ball">
+  <img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Soccer Ball"
+       style="position:absolute; top: 0px; right: 0px;" />
+  </a>
+  
   <style>
-    :root {
-      /* school colors from sources */
-      --sk1: #ff7eb9;  /* Suankularb pink [web:6] */
-      --sk2: #7ec8ff;  /* Suankularb blue [web:6] */
-      --ds1: #2ecc71;  /* Debsirin green [web:24][web:35] */
-      --ds2: #f1c40f;  /* Debsirin yellow [web:24][web:35] */
-      --ac1: #ff4b5c;  /* Assumption red [web:36] */
-      --ac2: #ffffff;  /* Assumption white [web:36] */
-      --bcc1: #7f00ff; /* BCC purple [web:13] */
-      --bcc2: #f9d423; /* BCC gold [web:13] */
-
-      /* active background stops (will be changed by JS) */
-      --bg-a: var(--sk1);
-      --bg-b: var(--ds1);
-      --bg-c: var(--ac1);
-      --bg-d: var(--bcc1);
-    }
-
     body {
       font-family: "Thasadith", sans-serif;
+      font-weight: 400;
+      font-style: normal;
       margin: 0;
-      background: linear-gradient(to bottom, var(--bg-a), var(--bg-b), var(--bg-c), var(--bg-d));
-      background-size: 100% 200%;
-      animation: glowcolors 6s ease-in-out infinite;
-      transition: background 0.6s ease;
+      background: linear-gradient(120deg, #ff9a9e, #a18cd1, #fbc2eb);
+      background-size: 300% 300%;
+      animation: glowcolors 10s ease-in-out infinite;
     }
 
     @keyframes glowcolors {
-      0%   { background-position: 0% 0%; }
-      50%  { background-position: 0% 100%; }
-      100% { background-position: 0% 0%; }
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    header { padding: 30px; text-align: left; }
+    header {
+      padding: 30px;
+      text-align: left;
+    }
 
+    /* translucent glass boxes */
     .glass-box {
       background: rgba(255, 255, 255, 0.22);
       border-radius: 18px;
       padding: 18px 22px;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      border: 1px solid rgba(255,255,255,0.45);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.45);
     }
 
-    h1 { margin: 0; font-size: 26px; }
-
-    .school-buttons {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
+    h1 {
+      margin: 0;
+      font-size: 26px;
     }
+
+  .school-buttons {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
 
     .school-button {
       font-family: "Thasadith", sans-serif;
@@ -74,23 +70,96 @@
       border: none;
       cursor: pointer;
       color: #000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.2s ease;
     }
+
     .school-button:hover {
       opacity: 0.95;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
-    .btn-sk       { background: linear-gradient(135deg, var(--sk1),  var(--sk2)); }
-    .btn-debsirin { background: linear-gradient(135deg, var(--ds1),  var(--ds2)); }
-    .btn-ac       { background: linear-gradient(135deg, var(--ac1),  var(--ac2)); }
-    .btn-bcc      { background: linear-gradient(135deg, var(--bcc1), var(--bcc2)); }
+    /* button gradients */
+    .btn-sk {
+      background: linear-gradient(135deg, #ff7eb9, #7ec8ff);
+    }
+
+    .btn-debsirin {
+      background: linear-gradient(135deg, #2ecc71, #f1c40f);
+    }
+
+    .btn-ac {
+      background: linear-gradient(135deg, #ff4b5c, #ffffff);
+    }
+
+    .btn-bcc {
+      background: linear-gradient(135deg, #7f00ff, #f9d423);
+    }
+
+    /* image grid container */
+    .school-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 10px 30px 40px;
+    }
+
+    /* each card: still uses a wrapper for layout, but no classes on img elements */
+    .school-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .school-card img:nth-of-type(1) {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .school-card img:nth-of-type(2) {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 190px;
+      object-fit: contain;
+      background: #ffffff;
+      opacity: 0;
+      transform: scale(1.08);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .school-card:hover img:nth-of-type(1) {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+
+    .school-card:hover img:nth-of-type(2) {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .school-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 6px 10px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+      color: #fff;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
   <header>
+    <!-- translucent box for marquee text -->
     <div class="glass-box">
       <h1>
         <marquee>
@@ -104,65 +173,67 @@
       </h1>
     </div>
 
-    <div class="glass-box" style="margin-top:16px;">
+    <!-- translucent box for buttons -->
+    <div class="glass-box" style="margin-top: 16px;">
       <div class="school-buttons">
-        <button class="school-button btn-sk"
-                data-bg-left="var(--sk1)" data-bg-right="var(--sk2)"
-                onclick="location.href='https://www.sk.ac.th/'">
-          โรงเรียนสวนกุหลาบวิทยาลัย
+        <button class="school-button btn-sk" onclick="location.href='https://www.sk.ac.th/'">
+          [โรงเรียนสวนกุหลาบวิทยาลัย]
         </button>
-
-        <button class="school-button btn-debsirin"
-                data-bg-left="var(--ds1)" data-bg-right="var(--ds2)"
-                onclick="location.href='https://www.debsirin.ac.th/'">
-          โรงเรียนเทพศิรินทร์
+        <button class="school-button btn-debsirin" onclick="location.href='https://www.debsirin.ac.th/'">
+          [โรงเรียนเทพศิรินทร์]
         </button>
-
-        <button class="school-button btn-ac"
-                data-bg-left="var(--ac1)" data-bg-right="var(--ac2)"
-                onclick="location.href='https://www.assumption.ac.th/'">
-          โรงเรียนอัสสัมชัญ
+        <button class="school-button btn-ac" onclick="location.href='https://www.assumption.ac.th/'">
+          [โรงเรียนอัสสัมชัญ]
         </button>
-
-        <button class="school-button btn-bcc"
-                data-bg-left="var(--bcc1)" data-bg-right="var(--bcc2)"
-                onclick="location.href='https://www.bcc.ac.th/'">
-          โรงเรียนกรุงเทพคริสเตียนวิทยาลัย
+        <button class="school-button btn-bcc" onclick="location.href='https://www.bcc.ac.th/'">
+          [โรงเรียนกรุงเทพคริสเตียนวิทยาลัย]
         </button>
       </div>
     </div>
   </header>
+  <section class="school-images">
+    <!-- Suankularb -->
+    <a class="school-card" href="https://www.sk.ac.th/" target="_blank">
+      <img src="https://media.licdn.com/dms/image/v2/C511BAQEzkJhHSfeYhg/company-background_10000/company-background_10000/0/1583904285010/suankularb_wittayalai_highschool_cover?e=2147483647&v=beta&t=WJWwXjFWlB9EUYfRIt4UJKSltOnfq-IoFrLE2RMU13c" alt="Suankularb Wittayalai School">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Suankularb_Wittayalai_School_emblem.png/1200px-Suankularb_Wittayalai_School_emblem.png" alt="Suankularb emblem">
+      <div class="school-label">Suankularb Wittayalai (SK)</div>
+    </a>
 
-  <!-- ส่วนอื่น ๆ ของหน้า เช่น รูป/ประวัติ ใส่ต่อได้ตามเดิม -->
+    <!-- Bangkok Christian -->
+    <a class="school-card" href="https://www.bcc.ac.th/" target="_blank">
+      <img src="https://ple.co.th/wp-content/uploads/2021/12/%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E-%E0%B8%84%E0%B8%A3%E0%B8%B4%E0%B8%AA%E0%B9%80%E0%B8%95%E0%B8%B5%E0%B8%A2%E0%B8%9903.jpg" alt="Bangkok Christian College campus">
+      <img src="https://upload.wikimedia.org/wikipedia/en/2/29/Bangkok_Christian_College_logo.png" alt="Bangkok Christian College logo">
+      <div class="school-label">Bangkok Christian College (BCC)</div>
+    </a>
 
-  <script>
-    const root = document.documentElement;
-    const buttons = document.querySelectorAll('.school-button');
+    <!-- Debsirin -->
+    <a class="school-card" href="https://www.debsirin.ac.th/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/%E0%B8%95%E0%B8%B6%E0%B8%81%E0%B9%81%E0%B8%A1%E0%B9%89%E0%B8%99%E0%B8%A8%E0%B8%B6%E0%B8%81%E0%B8%A9%E0%B8%B2%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99.JPG" alt="Debsirin School campus">
+      <img src="https://upload.wikimedia.org/wikipedia/th/4/4f/%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A8%E0%B8%B4%E0%B8%A3%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B9%8C.svg" alt="Debsirin School emblem">
+      <div class="school-label">Debsirin School (D.S.)</div>
+    </a>
 
-    const setFourColorBg = () => {
-      root.style.setProperty('--bg-a', getComputedStyle(root).getPropertyValue('--sk1'));
-      root.style.setProperty('--bg-b', getComputedStyle(root).getPropertyValue('--ds1'));
-      root.style.setProperty('--bg-c', getComputedStyle(root).getPropertyValue('--ac1'));
-      root.style.setProperty('--bg-d', getComputedStyle(root).getPropertyValue('--bcc1'));
-      document.body.style.background =
-        'linear-gradient(to bottom, var(--bg-a), var(--bg-b), var(--bg-c), var(--bg-d))';
-    };
-
-    // initial 4‑color vertical background
-    setFourColorBg();
-
-    buttons.forEach(btn => {
-      btn.addEventListener('mouseenter', () => {
-        const left  = btn.getAttribute('data-bg-left');
-        const right = btn.getAttribute('data-bg-right');
-        document.body.style.background =
-          `linear-gradient(to right, ${left}, ${right})`;
-      });
-
-      btn.addEventListener('mouseleave', () => {
-        setFourColorBg();
-      });
-    });
-  </script>
+    <!-- Assumption -->
+    <a class="school-card" href="https://www.assumption.ac.th/" target="_blank">
+      <img src="https://www.assumption.ac.th/assets/img/aboutAC/aboutAC-10.jpg" alt="Assumption College campus">
+      <img src="https://yt3.googleusercontent.com/VrvAp_1Wh6cXV-xB7RjpDl2KTdtwxuTubTC4XdJ2pzM9l0v65n4IAt7AwrbZFTqnqbE3VpLQZA=s900-c-k-c0x00ffffff-no-rj" alt="Assumption College logo">
+      <div class="school-label">Assumption College (AC)</div>
+    </a>
+  </section>
+  <!-- ส่วนประวัติประเพณีจตุรมิตร -->
+<section class="history-section">
+  <div class="glass-box history-box">
+    <h2>ประวัติฟุตบอลประเพณี “จตุรมิตรสามัคคี”</h2>
+    <p>
+      ช่วงรอยต่อระหว่าง พ.ศ. 2499 ถึงราว พ.ศ. 2506 คือช่วงที่คนไทยเรียกกันติดปากว่า “ยุคอันธพาลครองเมือง” บรรยากาศบ้านเมืองในช่วงนั้น เต็มไปด้วยวัยรุ่นเลือดร้อน แต่ละโรงเรียนยกพวกตีกันไม่เว้นแต่ละวัน สร้างความหนักใจให้ผู้ปกครองบ้านเมือง และผู้ปกครองยิ่งนัก ม.ล.ปิ่น มาลากุล รัฐมนตรีว่าการกระทรวงศึกษาธิการในขณะนั้น จึงเกิดความไม่สบายใจ และพยายามหาทางออก จนบังเกิดไอเดียบางอย่าง นั่นคือ “สร้างโรงเรียนชายตัวอย่าง” เพื่อแสดงให้สังคมเห็นกันไปเลยว่า โรงเรียนชายดีๆ ยังมีอีกมากมาย ที่รักกัน สามัคคีกัน ไม่ยกพวกตีกัน 4 โรงเรียนชายที่ถูกเลือกมาเป็นตัวอย่างก็คือ สวนกุหลาบวิทยาลัย, เทพศิรินทร์, อัสสัมชัญ และกรุงเทพคริสเตียน
+    </p>
+    <p>
+      ผู้อำนวยการของทั้ง 4 โรงเรียนในขณะนั้น จึงหารือกันว่า อยากจะทำอะไรบางอย่าง เพื่อแสดงให้เห็นถึงความเป็นปึกแผ่น และสามัคคีให้ชัดเจนยิ่งขึ้น ก่อนสรุปกันได้ว่า “มาเตะบอลกันเถอะ” จากความคิดริเริ่มของ อ.โปร่ง ส่งแสงเติม อาจารย์ใหญ่ของสวนกุหลาบฯ และ อ.อารีย์ เสมประสาท อาจารย์ใหญ่ของกรุงเทพคริสเตียนฯ ในตอนนั้น ก่อนไปขอความร่วมมือ อ.บุญอวบ บูรณะบุตร อาจารย์ใหญ่ของเทพศิรินทร์ และ อ.บรรณา ชโนดม อาจารย์ใหญ่ของอัสสัมชัญ จึงเกิด “จตุรมิตร” ครั้งแรก ในปี พ.ศ. 2507 โดย สวนกุหลาบวิทยาลัย เป็นเจ้าภาพ
+    </p>
+    <p>
+      “จตุรมิตร” มักจะจัดในช่วงเดือน พ.ย. หรือปลายปี ของทุกปี ก่อนหน้าการแข่งขัน ในช่วงเดือน ต.ค. ทั้ง 4 โรงเรียน จะมาร่วมทำกิจกรรมที่สำคัญมากร่วมกันเป็นประจำ นั่นคือ พิธีน้อมรำลึกพระมหากรุณาธิคุณ “พระปิยมหาราช” ในวันที่ 23 ต.ค. คณะครู นักเรียน และวงดุริยางค์ 4 สถาบัน จะมาร่วมรำลึกถึงพระมหากรุณาธิคุณของพระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว รัชกาลที่ 5 และวางพวงมาลาถวายสักการะพระบรมราชานุสาวรีย์ ณ ลานพระบรมรูปทรงม้า เนื่องในวันปิยมหาราช เพื่อเป็นการน้อมรำลึกพระมหากรุณาธิคุณของพระองค์ที่ทรงริเริ่มพระราชกรณียกิจในหลายๆ ด้าน เพื่อการพัฒนาประเทศ รวมถึงการวางรากฐานการศึกษาไทย โรงเรียนในเครือจตุรมิตร ทั้ง 4 โรงเรียน ต่างเป็นโรงเรียนที่ก่อตั้งในยุคแรกเริ่มของการศึกษาในประเทศไทยนั่นเอง
+    </p>
+  </div>
+</section>
 </body>
 </html>
