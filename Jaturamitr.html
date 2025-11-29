@@ -1,24 +1,105 @@
-<html>
-  <head>
-    <title>Jaturimitr 31st</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Playpen+Sans+Thai:wght@100..800&family=Thasadith:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <head>
-     <style>
-       body{font-family: "Thasadith", sans-serif;
-  font-weight: 400;
-  font-style: normal;}
-       header{background:linear_gradient(hotpink, skyblue);
-              padding:30px;
-             }
-       
-      </style>
-    </head>
-  <body background="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJKNopN_sUPBoTlEb8ztWEC2QoW5SGrQXmrg&s">
-    <header>
-      <h1><marquee><mark>
-        
-      </mark></marquee>
-      </h1>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jaturamitr 31st</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Playpen+Sans+Thai:wght@100..800&family=Thasadith:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Thasadith", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJKNopN_sUPBoTlEb8ztWEC2QoW5SGrQXmrg&s");
+      background-size: cover;
+      background-attachment: fixed;
+      margin: 0;
+    }
+
+    header {
+      background: linear-gradient(hotpink, skyblue);
+      padding: 30px;
+      text-align: left;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .school-buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* base style for all buttons */
+    .school-button {
+      font-family: "Thasadith", sans-serif;
+      font-size: 16px;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      color: #000;
+    }
+
+    .school-button:hover {
+      opacity: 0.9;
+    }
+
+    /* Suankularb: pink–blue (ชมพู–ฟ้า) */
+    .btn-sk {
+      background: linear-gradient(135deg, #ff7eb9, #7ec8ff);
+    }
+
+    /* Debsirin: green–yellow (เขียว–เหลือง) */
+    .btn-debsirin {
+      background: linear-gradient(135deg, #2ecc71, #f1c40f);
+    }
+
+    /* Assumption: red–white */
+    .btn-ac {
+      background: linear-gradient(135deg, #ff4b5c, #ffffff);
+    }
+
+    /* Bangkok Christian: purple–gold */
+    .btn-bcc {
+      background: linear-gradient(135deg, #7f00ff, #f9d423);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      <marquee>
+        <mark>
+          Suankularb Wittayalai SK 🌹
+          Bangkok Christian BCC ✝️
+          Debsirin D.S. 🎋
+          Assumption AC 🎀
+        </mark>
+      </marquee>
+    </h1>
+
+    <div class="school-buttons">
+      <button class="school-button btn-sk" onclick="location.href='https://www.sk.ac.th/'">
+        [translate:โรงเรียนสวนกุหลาบวิทยาลัย]
+      </button>
+      <button class="school-button btn-debsirin" onclick="location.href='https://www.debsirin.ac.th/'">
+        [translate:โรงเรียนเทพศิรินทร์]
+      </button>
+      <button class="school-button btn-ac" onclick="location.href='https://www.assumption.ac.th/'">
+        [translate:โรงเรียนอัสสัมชัญ]
+      </button>
+      <button class="school-button btn-bcc" onclick="location.href='https://www.bcc.ac.th/'">
+        [translate:โรงเรียนกรุงเทพคริสเตียนวิทยาลัย]
+      </button>
+    </div>
+  </header>
+</body>
+</html>
