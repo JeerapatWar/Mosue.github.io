@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Geometry Dash – Cube & Wave (Fixed)</title>
+<style>
+    html,body{
+        margin:0;
+        overflow:hidden;
+        background:#000814;
+        font-family:Arial,Helvetica,sans-serif;
+    }
+    canvas{
+        display:block;
+        background:linear-gradient(#081028,#000814);
+    }
+
+    /* In-game GUI */
+    #ui{
+        position:absolute;
+        top:15px;
+        right:15px;
+        display:flex;
+        gap:10px;
+        z-index:10;
+    }
+    .btn{
+        background:rgba(255,255,255,0.15);
+        padding:10px 15px;
+        border-radius:8px;
+        cursor:pointer;
+        color:white;
+        font-weight:bold;
+        user-select:none;
+    }
+    .btn:hover{
+        background:rgba(255,255,255,0.25);
+    }
+
+    /* Pause Menu */
+    #pauseMenu{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        padding:30px;
+        background:rgba(0,0,0,0.8);
+        border-radius:12px;
+        text-align:center;
+        display:none;
+        color:white;
+        z-index:20;
+    }
+    #pauseMenu button{
+        margin-top:12px;
+        padding:12px 18px;
+        border:none;
+        border-radius:8px;
+        background:#00e0ff;
+        color:#002033;
+        font-weight:bold;
+        cursor:pointer;
+        width:160px;
+    }
+</style>
+</head>
+<body>
+
+<canvas id="game"></canvas>
+
+<!-- In-game GUI -->
+<div id="ui">
+    <div class="btn" id="pauseBtn">Pause</div>
+</div>
+
+<!-- Pause Menu -->
+<div id="pauseMenu">
+    <h2>Paused</h2>
+    <button id="resumeBtn">Resume</button>
+    <button id="restartBtn">Restart</button>
+</div>
+
+<script>
+/* ============================================================
+   CANVAS SETUP
+============================================================ */
+const canvas=document.getElementById("game");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+    canvas.width=innerWidth;
+    canvas.height=innerHeight;
+}
+resize();
+addEventListener("resize",resize);
+
+/* ============================================================
+   GAME VARS
+============================================================ */
+let FLOOR = canvas.height - 160;
+
+let mode = "cube";   // "cube" -> "wave"
+
+const player={
+    x:200,
+    y:FLOOR-45,
+    w:45,
+    h:45,
+    vy:0,
+    gravity:2400,
+    jump:-1000,
+    waveSpeed:600,
+    waveDY:0,
+    alive:true,
+    grounded:true
+};
+
+let obstacles=[];
+let portals=[];
+let decor=[];
+let last=0;
+let spawnTimer=0;
+let speed=460;
+
+/* ============================================================
+   INPUT
+============================================================ */
+function jump(){
+    if(!player.alive) return;
+
+    if(mode==="cube"){
+        if(player.grounded){
+            player.vy = player.jump;
+            player.grounded = false;
+        }
+    }
+}
+addEventListener("keydown",e=>{
+    if(e.code==="Space") jump();
+});
+canvas.addEventListener("mousedown",jump);
+
+/* ============================================================
+   PORTALS
+============================================================ */
+function spawnPortal(x){
+    portals.push({
+        x:x,
+        y:FLOOR-140,
+        w:40,
+        h:120
+    });
+}
+
+function checkPortals(){
+    for(let p of portals){
+        if(player.x+player.w>p.x && player.x<p.x+p.w){
+            if(mode==="cube") mode="wave";
+        }
+    }
+}
+
+/* ============================================================
+   SPAWN OBSTACLES + DECOR
+============================================================ */
+function spawnSpike(){
+    obstacles.push({
+        type:"spike",
+        x:canvas.width+50,
+        y:FLOOR-40,
+        w:40,
+        h:40
+    });
+}
+
+function spawnDecor(){
+    decor.push({
+        x:canvas.width+Math.random()*500,
+        y:FLOOR-50-Math.random()*120,
+        w:50,
+        h:50
+    });
+}
+
+/* ============================================================
+   COLLISION
+============================================================ */
+function collide(a,b){
+    return !(a.x+a.w<b.x || a.x>b.x+b.w || a.y+a.h<b.y || a.y>b.y+b.h);
+}
+
+/* ============================================================
+   PAUSE SYSTEM
+============================================================ */
+let paused=false;
+
+const pauseMenu=document.getElementById("pauseMenu");
+document.getElementById("pauseBtn").onclick=()=>{
+    paused=true;
+    pauseMenu.style.display="block";
+};
+document.getElementById("resumeBtn").onclick=()=>{
+    paused=false;
+    pauseMenu.style.display="none";
+};
+document.getElementById("restartBtn").onclick=()=>{
+    location.reload();
+};
+
+/* ============================================================
+   GAME LOOP
+============================================================ */
+function loop(t){
+    requestAnimationFrame(loop);
+    if(paused||!player.alive) return;
+
+    const dt=(t-last)/1000;
+    last=t;
+
+    /* Gravity / Movement */
+    if(mode==="cube"){
+        player.vy+=player.gravity*dt;
+        player.y+=player.vy*dt;
+
+        if(player.y>=FLOOR-player.h){
+            player.y=FLOOR-player.h;
+            player.vy=0;
+            player.grounded=true;
+        }
+    }
+
+    if(mode==="wave"){
+        // wave is a 45° slope motion
+        player.waveDY += 1400*dt;
+        player.y += (player.waveDY * dt);
+        player.x += speed * dt;
+
+        // keep centered horizontally
+        player.x = 200;
+
+        // gravity-like control
+        if(mouseDown){
+            player.waveDY = -700;
+        }
+    }
+
+    /* Spawn things */
+    spawnTimer+=dt;
+    if(spawnTimer>1.1){
+        spawnSpike();
+        spawnDecor();
+
+        // spawn portal occasionally
+        if(Math.random()<0.25){
+            spawnPortal(canvas.width+300);
+        }
+
+        spawnTimer=0;
+    }
+
+    /* Move objects */
+    for(let o of obstacles) o.x-=speed*dt;
+    for(let d of decor) d.x-=speed*dt*0.6;
+    for(let p of portals) p.x-=speed*dt;
+
+    obstacles=obstacles.filter(o=>o.x>-200);
+    decor=decor.filter(d=>d.x>-200);
+    portals=portals.filter(p=>p.x>-200);
+
+    /* Portal check */
+    checkPortals();
+
+    /* Collision */
+    if(mode==="cube"){
+        let box={x:player.x,y:player.y,w:player.w,h:player.h};
+        for(let o of obstacles){
+            if(collide(box,o)) player.alive=false;
+        }
+    }
+    if(mode==="wave"){
+        let box={x:player.x,y:player.y,w:player.w,h:player.h};
+        for(let o of obstacles){
+            if(collide(box,o)) player.alive=false;
+        }
+    }
+
+    /* DRAW */
+    draw();
+}
+
+/* Mouse for wave */
+let mouseDown=false;
+canvas.onmousedown=()=>{ mouseDown=true; };
+canvas.onmouseup=()=>{ mouseDown=false; };
+
+/* ============================================================
+   DRAW
+============================================================ */
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Ground
+    ctx.fillStyle="#07131e";
+    ctx.fillRect(0,FLOOR,canvas.width,canvas.height-FLOOR);
+
+    // Decorative blocks
+    ctx.fillStyle="#112233";
+    for(let d of decor){
+        ctx.fillRect(d.x,d.y,d.w,d.h);
+    }
+
+    // Portals
+    for(let p of portals){
+        ctx.fillStyle="#00ffa6";
+        ctx.fillRect(p.x,p.y,p.w,p.h);
+    }
+
+    // Obstacles
+    for(let o of obstacles){
+        ctx.fillStyle="#ff2d75";
+        ctx.beginPath();
+        ctx.moveTo(o.x,o.y+o.h);
+        ctx.lineTo(o.x+o.w/2,o.y);
+        ctx.lineTo(o.x+o.w,o.y+o.h);
+        ctx.fill();
+    }
+
+    // Player
+    ctx.fillStyle="#00e0ff";
+    ctx.fillRect(player.x,player.y,player.w,player.h);
+
+    // Mode label
+    ctx.fillStyle="white";
+    ctx.font="24px Arial";
+    ctx.fillText("Mode: "+mode,20,40);
+}
+
+requestAnimationFrame(loop);
+</script>
+
+</body>
+</html>
