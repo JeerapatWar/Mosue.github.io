@@ -20,21 +20,29 @@
             height: 100vh;
             background-size: cover;
             background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         /* HIGHLIGHTED TEXT (<mark>) */
         mark {
-            background: linear-gradient(#FFFFE0, #BDB76B, white);
-            color: black;
+            background: linear-gradient(#e3f2fd, #bbdefb, white);
+            color: #003c8f;
         }
 
         /* MAIN CONTENT BOX */
         section {
-            background: linear-gradient(#9ACD32, #FFD700, white);
-            padding: 15px;
+            padding: 20px;
             margin: 20px auto;
             width: 90%;
-            border-radius: 10px;
+        }
+
+        /* NEW translucent box for each section */
+        .content-box {
+            background: rgba(255, 255, 255, 0.65);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         /* PARAGRAPH INDENT */
@@ -54,11 +62,11 @@
         }
 
         @keyframes glowColors {
-            0% { box-shadow: 0 0 20px DodgerBlue; }
-            25% { box-shadow: 0 0 20px Cyan; }
-            50% { box-shadow: 0 0 20px GreenYellow; }
-            75% { box-shadow: 0 0 20px LawnGreen; }
-            100% { box-shadow: 0 0 20px LightCyan; }
+            0% { box-shadow: 0 0 20px #64b5f6; }
+            25% { box-shadow: 0 0 20px #4fc3f7; }
+            50% { box-shadow: 0 0 20px #81c784; }
+            75% { box-shadow: 0 0 20px #4dd0e1; }
+            100% { box-shadow: 0 0 20px #b3e5fc; }
         }
 
         /* BLINKING BACKGROUND TEXT */
@@ -68,82 +76,89 @@
         }
 
         @keyframes blinkBg {
-            0% { background: yellow; }
-            100% { background: #D2B48C; }
+            0% { background: #fff59d; }
+            100% { background: #ffe082; }
         }
     </style>
 </head>
 
 <!-- BODY SECTION -->
-<body background="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTLku3HMPPhN7K7lTzIcG3kXgA4-Xib7xvCQ&s">
+<body background="https://wallpaperaccess.com/full/186903.jpg">
 
     <!-- MAIN CONTENT WRAPPER -->
     <section>
 
         <!-- MAIN HEADER -->
-        <center>
-            <h1><mark>5 ธันวาคม วันชาติไทย 🇹🇭</mark></h1>
+        <div class="content-box">
+            <center>
+                <h1><mark>5 ธันวาคม วันชาติไทย 🇹🇭</mark></h1>
 
-            <span class="blink-bg">ความเป็นมาของวันชาติไทย</span>
-            <br><br>
+                <span class="blink-bg">ความเป็นมาของวันชาติไทย</span>
+                <br><br>
 
-            <!-- INTRO IMAGE -->
-            <img src="https://i.pinimg.com/736x/10/ba/2b/10ba2b774f28562b11d7b3b9e5e73798.jpg"
-                width="320" height="320" class="zoom">
-        </center>
-
-        <br><br>
+                <!-- INTRO IMAGE -->
+                <img src="https://i.pinimg.com/736x/10/ba/2b/10ba2b774f28562b11d7b3b9e5e73798.jpg"
+                    width="320" height="320" class="zoom">
+            </center>
+        </div>
 
         <!-- HISTORY TEXT -->
-        <p>สำหรับประเทศไทย ...</p>
-        <p>วันที่ 24 มิถุนายน ...</p>
-        <p>ด้วยคณะรัฐมนตรี ...</p>
-        <p>คณะกรรมการนี้ได้พิจารณาแล้ว ...</p>
+        <div class="content-box">
+            <p>สำหรับประเทศไทย ...</p>
+            <p>วันที่ 24 มิถุนายน ...</p>
+            <p>ด้วยคณะรัฐมนตรี ...</p>
+            <p>คณะกรรมการนี้ได้พิจารณาแล้ว ...</p>
+        </div>
 
-        <center>
-            <!-- SUBTITLE -->
-            <span class="blink-bg">วันชาติในประเทศอื่นๆ</span>
-            <br><br>
+        <!-- OTHER COUNTRIES SECTION -->
+        <div class="content-box">
+            <center>
+                <!-- SUBTITLE -->
+                <span class="blink-bg">วันชาติในประเทศอื่นๆ</span>
+                <br><br>
 
-            <!-- OTHER COUNTRIES IMAGES -->
-            <img src="https://live.staticflickr.com/65535/51720409372_15972dd704_b.jpg"
-                width="500" height="250" class="zoom">
-            <br><br>
+                <!-- OTHER COUNTRIES IMAGES -->
+                <img src="https://live.staticflickr.com/65535/51720409372_15972dd704_b.jpg"
+                    width="500" height="250" class="zoom">
+                <br><br>
 
-            <img src="https://live.staticflickr.com/65535/51730371896_3db75a8600_b.jpg"
-                width="500" height="700" class="zoom">
-        </center>
+                <img src="https://live.staticflickr.com/65535/51730371896_3db75a8600_b.jpg"
+                    width="500" height="700" class="zoom">
+            </center>
+        </div>
 
-        <p>แม้ประเทศไทยเราเอง ...</p>
-        <p>ดังนั้น นับแต่ปี พ.ศ. 2503 ...</p>
-
-        <br><br>
+        <div class="content-box">
+            <p>แม้ประเทศไทยเราเอง ...</p>
+            <p>ดังนั้น นับแต่ปี พ.ศ. 2503 ...</p>
+        </div>
 
         <!-- NATIONAL ACTIVITIES SECTION -->
-        <center>
-            <span class="blink-bg">กิจกรรมวันชาติไทย</span>
-            <br><br>
+        <div class="content-box">
+            <center>
+                <span class="blink-bg">กิจกรรมวันชาติไทย</span>
+                <br><br>
 
-            <img src="https://lh3.googleusercontent.com/proxy/uIGxS3O2wXrQS1bs9DxvJxTprzUiqlCrQOBOrsiWURF5k3FEazXzcAA2WzzaSb5D3etd0S1A2AeqnGs1G6uvOIxqoymgdulSun_iFveiSfftcTsSr5qkOT00w"
-                width="500" height="250" class="zoom">
-        </center>
+                <img src="https://lh3.googleusercontent.com/proxy/uIGxS3O2wXrQS1bs9DxvJxTprzUiqlCrQOBOrsiWURF5k3FEazXzcAA2WzzaSb5D3etd0S1A2AeqnGs1G6uvOIxqoymgdulSun_iFveiSfftcTsSr5qkOT00w"
+                    width="500" height="250" class="zoom">
+            </center>
+        </div>
 
-        <br><br>
-
-        <p>ตามปกติ การจัดงาน “วันชาติ” ...</p>
-        <p>ดังนั้น “วันชาติ” ของเราจึงดูเหมือนไม่ค่อยมีความสำคัญ ...</p>
-
-        <br><br>
+        <div class="content-box">
+            <p>ตามปกติ การจัดงาน “วันชาติ” ...</p>
+            <p>ดังนั้น “วันชาติ” ของเราจึงดูเหมือนไม่ค่อยมีความสำคัญ ...</p>
+        </div>
 
         <!-- YOUTUBE VIDEO SECTION -->
-        <center>
-            <iframe width="560" height="315"
-                src="https://www.youtube.com/embed/IcPC4FdCH7g?si=tKarR86z43_D685Z"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-            </iframe>
-        </center>
+        <div class="content-box">
+            <center>
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/IcPC4FdCH7g?si=tKarR86z43_D685Z"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
+            </center>
+        </div>
 
     </section>
 </body>
