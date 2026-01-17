@@ -1,0 +1,277 @@
+Here is a cleaned, modernized Teachers’ Day page with comments and all Thai text translated into English. You can paste this into `TeachersDay.html` and adjust the English wording as you like.
+
+```html
+<!doctype html>
+<html lang="en">
+  <!-- Root HTML element. lang="en" declares the language as English. -->
+  <head>
+    <!-- Metadata and resources for the page -->
+    <meta charset="utf-8">
+    <!-- Use UTF‑8 so Thai or other languages still display correctly if you add them later -->
+
+    <title>National Teachers' Day</title>
+    <!-- Text shown in the browser tab -->
+
+    <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Load the Pridi font from Google Fonts (looks good for Thai and English) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    >
+
+    <style>
+      /* =========
+         Base styles
+         ========= */
+      :root {
+        /* Colors and sizes for easy tweaking later */
+        --bg-gradient: linear-gradient(135deg, #4b6cb7, #182848);
+        --glass-bg: rgba(255, 255, 255, 0.12);
+        --glass-border: rgba(255, 255, 255, 0.45);
+        --glass-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+        --radius-lg: 24px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Pridi", serif;
+        background: var(--bg-gradient); /* Modern gradient background instead of an image */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        color: #f5f5f5;
+      }
+
+      /* =========
+         Floating “flowers” (emoji only, no image files)
+         ========= */
+      .flower {
+        position: fixed;      /* Stay in place relative to the viewport */
+        top: -40px;           /* Start a bit above the visible area */
+        font-size: 22px;
+        animation: fall linear infinite;
+        opacity: 0.85;
+        pointer-events: none; /* Do not block clicks */
+      }
+
+      /* Each nth-child gets a different horizontal position & speed */
+      .flower:nth-child(1) { left: 8%;  animation-duration: 8s; }
+      .flower:nth-child(2) { left: 24%; animation-duration: 6.5s; }
+      .flower:nth-child(3) { left: 42%; animation-duration: 9s; }
+      .flower:nth-child(4) { left: 63%; animation-duration: 7.5s; }
+      .flower:nth-child(5) { left: 80%; animation-duration: 8.5s; }
+
+      @keyframes fall {
+        to {
+          transform: translateY(110vh); /* Fall all the way down past the screen */
+        }
+      }
+
+      /* =========
+         Main glass card layout
+         ========= */
+      .card {
+        width: min(960px, 100%);
+        background: var(--glass-bg);           /* Glassmorphism: semi‑transparent background */
+        border-radius: var(--radius-lg);
+        padding: 32px 28px 20px;
+        border: 1px solid var(--glass-border); /* Light border to define edges */
+        box-shadow: var(--glass-shadow);       /* Soft shadow for depth */
+        backdrop-filter: blur(18px);           /* Blur the background behind the card */
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      /* =========
+         Header section inside the card
+         ========= */
+      header {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      header h1 {
+        margin: 0 0 8px;
+        font-size: 2.4rem;
+      }
+
+      header h2 {
+        margin: 0;
+        font-size: 1.4rem;
+        opacity: 0.9;
+      }
+
+      /* =========
+         Content sections
+         ========= */
+      section {
+        margin-bottom: 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.02)
+        );                                 /* Slight inner gradient for each section */
+        border-radius: 18px;
+        padding: 18px 16px 14px;
+      }
+
+      section:last-of-type {
+        margin-bottom: 0;
+      }
+
+      h2 {
+        margin-top: 0;
+        font-size: 1.35rem;
+        animation: softbounce 3s infinite; /* Gentle bounce animation for headings */
+      }
+
+      @keyframes softbounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+
+      p {
+        text-indent: 2em;  /* First-line indent, like a paragraph in a book */
+        line-height: 1.7;
+        margin: 8px 0 0;
+      }
+
+      /* =========
+         Video (YouTube) embeds
+         ========= */
+      .video-wrapper {
+        position: relative;
+        padding-top: 56.25%;   /* 16:9 ratio */
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 12px;
+      }
+
+      .video-wrapper iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      /* =========
+         Footer
+         ========= */
+      footer {
+        margin-top: 18px;
+        text-align: center;
+        font-size: 0.9rem;
+        opacity: 0.85;
+      }
+
+      /* =========
+         Responsive tweaks
+         ========= */
+      @media (max-width: 600px) {
+        body {
+          padding: 16px;
+        }
+
+        .card {
+          padding: 24px 18px 16px;
+        }
+
+        header h1 {
+          font-size: 1.9rem;
+        }
+
+        header h2 {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Floating flower emojis, no image files used -->
+    <div class="flower">🌸</div>
+    <div class="flower">🌼</div>
+    <div class="flower">🌷</div>
+    <div class="flower">💮</div>
+    <div class="flower">🌺</div>
+
+    <!-- Main glass card wrapper -->
+    <article class="card">
+      <!-- Page header: title and date -->
+      <header>
+        <h1>National Teachers' Day</h1>
+        <h2>16 January 2026</h2>
+      </header>
+
+      <!-- Section: meaning of Teachers' Day -->
+      <section>
+        <h2>Meaning of Teachers' Day</h2>
+        <p>
+          Teachers' Day is a special day to honor teachers who dedicate themselves to
+          teaching, guiding, and shaping students' lives. It is a reminder of how
+          important teachers are in developing people and society.
+        </p>
+      </section>
+
+      <!-- Section: activities on Teachers' Day -->
+      <section>
+        <h2>Teachers' Day Activities</h2>
+        <p>
+          Many schools organize ceremonies where students pay respect to teachers,
+          offer flowers, and express their gratitude. Some schools also hold
+          performances, shows, and exhibitions to celebrate the bond between
+          teachers and students.
+        </p>
+      </section>
+
+      <!-- Section: Teachers' Day slogan -->
+      <section>
+        <h2>Teachers' Day Slogan</h2>
+        <p>
+          Every year, there is a Teachers' Day slogan that reminds everyone of good
+          values such as gratitude, responsibility, and continuous learning.
+          Students are encouraged to remember the slogan and apply it in their
+          daily lives.
+        </p>
+      </section>
+
+      <!-- Section: thank you message + YouTube video -->
+      <section>
+        <h2>Thank You, Teachers</h2>
+        <p>
+          On this occasion, students would like to say thank you to all teachers
+          for their kindness, patience, and support. Without teachers, we would
+          not grow into knowledgeable and responsible people.
+        </p>
+
+        <!-- Responsive YouTube embed; uses an online video, not a local file -->
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/i9T0tUKjInc"
+            title="Teachers' Day video"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Footer with author info -->
+      <footer>
+        Created by Mr. Meenoi Margarine, Class 201, No. 100
+      </footer>
+    </article>
+  </body>
+</html>
+```
